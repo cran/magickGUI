@@ -1,7 +1,7 @@
 Package: magickGUI
 Type: Package
 Title: GUI Tools for Interactive Image Processing with 'magick'
-Version: 0.1.0
+Version: 1.0.1
 Authors@R: c(
     person("Shota", "Ochi", email = "shotaochi1990@gmail.com", role = c("aut", "cre")))
 Maintainer: Shota Ochi <shotaochi1990@gmail.com>
@@ -13,9 +13,10 @@ Suggests: testthat (>= 2.0.0), knitr, rmarkdown
 URL: https://github.com/ShotaOchi/magickGUI
 BugReports: https://github.com/ShotaOchi/magickGUI/issues
 NeedsCompilation: no
+SystemRequirements: ImageMagick (>= 6.9.5.4)
 RoxygenNote: 6.1.1
 Encoding: UTF-8
-Packaged: 2019-02-28 19:39:45 UTC; shota
+Packaged: 2019-04-30 09:09:53 UTC; shota
 Author: Shota Ochi [aut, cre]
 Repository: CRAN
-Date/Publication: 2019-03-13 11:30:02 UTC
+Date/Publication: 2019-05-09 12:20:03 UTC

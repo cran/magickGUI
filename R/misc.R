@@ -18,6 +18,7 @@ NULL
 #' @importFrom magick image_reducenoise
 #' @importFrom magick image_threshold
 #' @importFrom magick image_write
+#' @importFrom magick magick_config
 #' @importFrom tcltk tclvalue
 #' @importFrom tcltk tclVar
 #' @importFrom tcltk tkbutton
@@ -25,6 +26,7 @@ NULL
 #' @importFrom tcltk tkdestroy
 #' @importFrom tcltk tkframe
 #' @importFrom tcltk tkimage.create
+#' @importFrom tcltk tkinvoke
 #' @importFrom tcltk tklabel
 #' @importFrom tcltk tkpack
 #' @importFrom tcltk tkscale
@@ -44,4 +46,17 @@ wait_time_long <- function()
   wait_start <- proc.time()[3]
   wait_time <- 0.5 # sec
   while (proc.time()[3] - wait_start < wait_time) {}
+}
+
+get_minimum_version <- function()
+{
+  "6.9.5.4" # minimum version is written in test/testthat.R file, too. Rewrite test/testthat.R file if minimum version is changed.
+}
+
+.onAttach <- function(lib, pkg){
+  version_ImageMagick <- magick_config()$version
+  if (version_ImageMagick < get_minimum_version())
+  {
+    packageStartupMessage(sprintf("The version of ImageMagick is %s.\nThe version of ImageMagick should be greater than or equal to %s.", version_ImageMagick, get_minimum_version()))
+  }
 }
