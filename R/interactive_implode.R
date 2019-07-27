@@ -1,12 +1,12 @@
 #' interactive imploding
 #'
 #' Using image_implode of 'magick' interactively.
-#' factor is a parameter of image_implode. see reference manual of 'magick' for detail.
+#' factor is a parameter of image_implode. See reference manual of 'magick' for detail.
 #' @param image a magick image object
 #' @param range_max define maximum in slider. must be positive.
 #' @param resolution resolution of slider
-#' @param return_param if TRUE, returns value of factor. if FALSE, returns magick image object.
-#' @return magick a image object or value of factor
+#' @param return_param If return_param is TRUE, returns value of factor. If return_param is FALSE, returns a magick image object.
+#' @return a magick image object or value of factor
 #' @author Shota Ochi
 #' @export
 #' @examples

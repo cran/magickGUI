@@ -1,12 +1,12 @@
 #' interactive despeckling
 #'
 #' Using image_despeckle of 'magick' interactively.
-#' times is a parameter of image_despeckle. see reference manual of 'magick' for detail.
+#' times is a parameter of image_despeckle. See reference manual of 'magick' for detail.
 #' @param image a magick image object
 #' @param range_max define maximum in slider. must be positive.
 #' @param resolution resolution of slider
-#' @param return_param if TRUE, returns value of times. if FALSE, returns magick image object.
-#' @return magick a image object or value of times
+#' @param return_param If return_param is TRUE, returns value of times. If return_param is FALSE, returns a magick image object.
+#' @return a magick image object or value of times
 #' @author Shota Ochi
 #' @export
 #' @examples

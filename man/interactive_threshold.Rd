@@ -16,14 +16,14 @@ interactive_threshold(image, type = c("black", "white"),
 
 \item{resolution}{resolution of slider}
 
-\item{return_param}{if TRUE, returns threshold value. if FALSE, returns magick image object.}
+\item{return_param}{If return_param is TRUE, returns threshold value. If return_param is FALSE, returns a magick image object.}
 }
 \value{
-magick a image object or threshold value
+a magick image object or threshold value
 }
 \description{
 Using image_threshold of 'magick' interactively.
-type and channel are parameters of image_threshold. see reference manual of 'magick' for detail.
+type and channel are parameters of image_threshold. See reference manual of 'magick' for detail.
 }
 \examples{
 \donttest{

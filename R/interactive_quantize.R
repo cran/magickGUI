@@ -1,15 +1,15 @@
 #' interactive quantization
 #'
 #' Using image_quantize of 'magick' interactively.
-#' max, colorspace, dither, and treedepth are parameters of image_quantize. see reference manual of 'magick' for detail.
+#' max, colorspace, dither, and treedepth are parameters of image_quantize. See reference manual of 'magick' for detail.
 #' @param image a magick image object
 #' @param colorspace specify colorspace. for example, "rgb", "gray", or "cmyk".
 #' @param dither apply Floyd/Steinberg error diffusion to the image
 #' @param treedepth depth of the quantization color classification tree
 #' @param range_max define maximum in slider. must be positive.
 #' @param resolution resolution of slider
-#' @param return_param if TRUE, returns value of max. if FALSE, returns magick image object.
-#' @return magick a image object or value of max
+#' @param return_param If return_param is TRUE, returns value of max. If return_param is FALSE, returns a magick image object.
+#' @return a magick image object or value of max
 #' @author Shota Ochi
 #' @export
 #' @examples

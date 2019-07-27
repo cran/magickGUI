@@ -16,14 +16,14 @@ interactive_blur(image, range_max_radius = 5, range_max_sigma = 5,
 
 \item{resolution}{resolution of slider}
 
-\item{return_param}{if TRUE, returns values of radius and sigma. if FALSE, returns magick image object.}
+\item{return_param}{If return_param is TRUE, returns values of radius and sigma. If return_param is FALSE, returns a magick image object.}
 }
 \value{
-magick a image object or values of radius and sigma
+a magick image object or values of radius and sigma
 }
 \description{
 Using image_blur of 'magick' interactively.
-radius and sigma are parameters of image_blur. see reference manual of 'magick' for detail.
+radius and sigma are parameters of image_blur. See reference manual of 'magick' for detail.
 }
 \examples{
 \donttest{

@@ -1,7 +1,7 @@
 Package: magickGUI
 Type: Package
 Title: GUI Tools for Interactive Image Processing with 'magick'
-Version: 1.0.1
+Version: 1.1.0
 Authors@R: c(
     person("Shota", "Ochi", email = "shotaochi1990@gmail.com", role = c("aut", "cre")))
 Maintainer: Shota Ochi <shotaochi1990@gmail.com>
@@ -16,7 +16,7 @@ NeedsCompilation: no
 SystemRequirements: ImageMagick (>= 6.9.5.4)
 RoxygenNote: 6.1.1
 Encoding: UTF-8
-Packaged: 2019-04-30 09:09:53 UTC; shota
+Packaged: 2019-07-27 08:52:08 UTC; shota
 Author: Shota Ochi [aut, cre]
 Repository: CRAN
-Date/Publication: 2019-05-09 12:20:03 UTC
+Date/Publication: 2019-07-27 09:30:02 UTC

@@ -14,14 +14,14 @@ interactive_implode(image, range_max = 1, resolution = 0.1,
 
 \item{resolution}{resolution of slider}
 
-\item{return_param}{if TRUE, returns value of factor. if FALSE, returns magick image object.}
+\item{return_param}{If return_param is TRUE, returns value of factor. If return_param is FALSE, returns a magick image object.}
 }
 \value{
-magick a image object or value of factor
+a magick image object or value of factor
 }
 \description{
 Using image_implode of 'magick' interactively.
-factor is a parameter of image_implode. see reference manual of 'magick' for detail.
+factor is a parameter of image_implode. See reference manual of 'magick' for detail.
 }
 \examples{
 \donttest{
