@@ -1,10 +1,10 @@
-2dd78ad8dc894279490b561cb1c969cd *DESCRIPTION
+2c7c6ff2bcb81420eb3e77c0e4be0b6a *DESCRIPTION
 3fd70cf8e7b57d83c0940608028b3fcd *NAMESPACE
-d8eb04c6036a06cb3dee38d0ea0897f8 *NEWS.md
+eafb782d6b9dd76d2bd5eb398d4b6f8d *NEWS.md
 cf42615c1bd942ebbb065a391ad1d5ac *R/interactive_blur.R
 83851219796ac49cbf57f97974dc1b10 *R/interactive_canny.R
 67da09e97eebf7ebd862a5c8f590464a *R/interactive_charcoal.R
-f3d6bbc61a047d6892da5d8c47357f60 *R/interactive_composite.R
+e851edb1477c08d37763ae9689079aa7 *R/interactive_composite.R
 ff4537a78352868eef4c14424e9f343e *R/interactive_despeckle.R
 6ee34928e68047f4c0d8523799316fa9 *R/interactive_emboss.R
 94d851ab109e44f94abbb624ec01f365 *R/interactive_implode.R
