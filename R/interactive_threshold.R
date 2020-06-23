@@ -14,7 +14,6 @@
 #' \donttest{
 #' interactive_threshold(wizard)
 #' }
-
 interactive_threshold <- function(image, type = c("black", "white"), channel = NULL, resolution = 0.1, return_param = FALSE)
 {
   # make initial output
@@ -24,7 +23,7 @@ interactive_threshold <- function(image, type = c("black", "white"), channel = N
   # set variable range
   iminfo <- image_info(image)
   range_thr <- c(0,100)                               # threshold of image_threshold is a percentage.
-  length_slider <- as.integer(iminfo["width"] * 0.6)  # length of slider
+  length_slider <- as.integer(iminfo$width * 0.6)  # length of slider
   if (length_slider < 200)
   {
     length_slider <- 200

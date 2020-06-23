@@ -6,14 +6,19 @@
 NULL
 
 #' @importFrom graphics plot
+#' @importFrom magick geometry_area
 #' @importFrom magick geometry_point
 #' @importFrom magick geometry_size_percent
+#' @importFrom magick image_annotate
+#' @importFrom magick image_blank
 #' @importFrom magick image_blur
 #' @importFrom magick image_canny
 #' @importFrom magick image_charcoal
 #' @importFrom magick image_composite
+#' @importFrom magick image_crop
 #' @importFrom magick image_despeckle
 #' @importFrom magick image_emboss
+#' @importFrom magick image_fill
 #' @importFrom magick image_implode
 #' @importFrom magick image_info
 #' @importFrom magick image_modulate
@@ -41,14 +46,14 @@ NULL
 wait_time <- function()
 {
   wait_start <- proc.time()[3]
-  wait_time <- 0.1 # sec
+  wait_time <- 0.5 # sec
   while (proc.time()[3] - wait_start < wait_time) {}
 }
 
 wait_time_long <- function()
 {
   wait_start <- proc.time()[3]
-  wait_time <- 0.5 # sec
+  wait_time <- 1.0 # sec
   while (proc.time()[3] - wait_start < wait_time) {}
 }
 

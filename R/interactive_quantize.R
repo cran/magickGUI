@@ -16,7 +16,6 @@
 #' \donttest{
 #' interactive_quantize(wizard)
 #' }
-
 interactive_quantize <- function(image, colorspace = "rgb", dither = NULL, treedepth = NULL, range_max = 256, resolution = 1, return_param = FALSE)
 {
   # make initial output
@@ -26,7 +25,7 @@ interactive_quantize <- function(image, colorspace = "rgb", dither = NULL, treed
   # set variable range
   iminfo <- image_info(image)
   range_max <- c(0,range_max)
-  length_slider <- as.integer(iminfo["width"] * 0.6) # length of slider
+  length_slider <- as.integer(iminfo$width * 0.6) # length of slider
   if (length_slider < 200)
   {
     length_slider <- 200

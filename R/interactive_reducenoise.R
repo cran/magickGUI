@@ -13,7 +13,6 @@
 #' \donttest{
 #' interactive_reducenoise(wizard)
 #' }
-
 interactive_reducenoise <- function(image, range_max = 30, resolution = 1, return_param = FALSE)
 {
   # make initial output
@@ -23,7 +22,7 @@ interactive_reducenoise <- function(image, range_max = 30, resolution = 1, retur
   # set variable range
   iminfo <- image_info(image)
   range_radius <- c(0,range_max)
-  length_slider <- as.integer(iminfo["width"] * 0.6) # length of slider
+  length_slider <- as.integer(iminfo$width * 0.6) # length of slider
   if (length_slider < 200)
   {
     length_slider <- 200

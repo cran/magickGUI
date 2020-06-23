@@ -15,7 +15,6 @@
 #' \donttest{
 #' interactive_modulate(wizard)
 #' }
-
 interactive_modulate <- function(image, range_max_brightness = 200, range_max_saturation = 200, range_max_hue = 200, resolution = 0.1, return_param = FALSE)
 {
   # make initial output
@@ -27,7 +26,7 @@ interactive_modulate <- function(image, range_max_brightness = 200, range_max_sa
   range_brightness <- c(0, range_max_brightness)
   range_saturation <- c(0, range_max_saturation)
   range_hue <- c(0, range_max_hue)
-  length_slider <- as.integer(iminfo["width"] * 0.6) # length of slider
+  length_slider <- as.integer(iminfo$width * 0.6) # length of slider
   if (length_slider < 200)
   {
     length_slider <- 200
@@ -72,7 +71,7 @@ interactive_modulate <- function(image, range_max_brightness = 200, range_max_sa
   win1.frame1.slider <- tkscale(win1.frame1, from = range_brightness[1], to = range_brightness[2], variable = slider_value_brightness, orient = "horizontal", length = length_slider, command = command_slider_brightness, resolution = resolution, showvalue = 0)
   win1.frame2.slider <- tkscale(win1.frame2, from = range_saturation[1], to = range_saturation[2], variable = slider_value_saturation, orient = "horizontal", length = length_slider, command = command_slider_saturation, resolution = resolution, showvalue = 0)
   win1.frame3.slider <- tkscale(win1.frame3, from = range_hue[1], to = range_hue[2], variable = slider_value_hue, orient = "horizontal", length = length_slider, command = command_slider_hue, resolution = resolution, showvalue = 0)
-  temp_val <- iniv
+  temp_val <- rep(iniv, 3)
   update_image <- function()
   {
     temp_image <- image_modulate(image, temp_val[1], temp_val[2], temp_val[3])
