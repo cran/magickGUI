@@ -8,6 +8,7 @@
 #' @param compose_args additional arguments needed for some composite operations
 #' @param resolution resolution of slider
 #' @param return_param If return_param is TRUE, returns values of offset. If return_param is FALSE, returns a magick image object.
+#' @param scale geometry to be passed to image_scale function of magick package. image is scaled just for preview and result image is not scaled if scale is given.
 #' @return magick a image object or values of offset
 #' @author Shota Ochi
 #' @export
@@ -15,11 +16,18 @@
 #' \donttest{
 #' interactive_composite(wizard, rose)
 #' }
-interactive_composite <- function(image, composite_image, operator = "atop", compose_args = "", resolution = 1, return_param = FALSE)
+interactive_composite <- function(image, composite_image, operator = "atop", compose_args = "", resolution = 1, return_param = FALSE, scale)
 {
+  # image must be convreted into png to avoid the error of tkimage.create function
+  image_original <- image
+  image <- image_convert(as.list(image)[[1]], format = "png")
+  composite_image_original <- composite_image
+  composite_image <- image_convert(as.list(composite_image)[[1]], format = "png")
+  
   # make initial output
   iniv <- 0
   initial <- image_composite(image, composite_image, operator = operator, offset = geometry_point(iniv, iniv), compose_args = compose_args)
+  is_missing_scale <- missing(scale)
 
   # set variable range
   iminfo <- image_info(image)
@@ -36,7 +44,13 @@ interactive_composite <- function(image, composite_image, operator = "atop", com
   quit_waiting <- !is.null(getOption("unit_test_magickGUI"))
   temp <- tempfile(fileext = ".jpg")
   on.exit(unlink(temp), add = TRUE)
-  image_write(initial, temp)
+  if (!is_missing_scale)
+  {
+    image_write(image_scale(initial, scale), temp)
+  } else
+  {
+    image_write(initial, temp)
+  }
   image_tcl <- tkimage.create("photo", "image_tcl", file = temp)
   label_digits <- -as.integer(log(resolution, 10))
   label_digits <- ifelse(label_digits > 0, label_digits, 0)
@@ -66,7 +80,13 @@ interactive_composite <- function(image, composite_image, operator = "atop", com
   update_image <- function()
   {
     temp_image <- image_composite(image, composite_image, operator = operator, offset = geometry_point(temp_val[1], temp_val[2]), compose_args = compose_args)
-    image_write(temp_image, temp)
+    if (!is_missing_scale)
+    {
+      image_write(image_scale(temp_image, scale), temp)
+    } else
+    {
+      image_write(temp_image, temp)
+    }
     image_tcl <- tkimage.create("photo", "image_tcl", file = temp)
     tkconfigure(win1.im, image = image_tcl)
   }
@@ -96,7 +116,8 @@ interactive_composite <- function(image, composite_image, operator = "atop", com
       error = function(e) assign("wait_test", TRUE, inherits = TRUE)
       )
     }
-    wait_time()
+    wait_time_long()
+    tkdestroy(win1.button)
   }
   tkwm.state(win1, "normal")
   while (TRUE)
@@ -124,5 +145,5 @@ interactive_composite <- function(image, composite_image, operator = "atop", com
   {
     return(geometry_point(val_res[1], val_res[2]))
   }
-  return(image_composite(image, composite_image, operator = operator, offset = geometry_point(val_res[1], val_res[2]), compose_args = compose_args))
+  return(image_composite(image_original, composite_image_original, operator = operator, offset = geometry_point(val_res[1], val_res[2]), compose_args = compose_args))
 }

@@ -6,6 +6,7 @@
 #' @param range_max define maximum in slider. must be positive.
 #' @param resolution resolution of slider
 #' @param return_param If return_param is TRUE, returns value of times. If return_param is FALSE, returns a magick image object.
+#' @param scale geometry to be passed to image_scale function of magick package. image is scaled just for preview and result image is not scaled if scale is given.
 #' @return a magick image object or value of times
 #' @author Shota Ochi
 #' @export
@@ -13,8 +14,16 @@
 #' \donttest{
 #' interactive_despeckle(wizard)
 #' }
-interactive_despeckle <- function(image, range_max = 50, resolution = 1, return_param = FALSE)
+interactive_despeckle <- function(image, range_max = 50, resolution = 1, return_param = FALSE, scale)
 {
+  # image must be convreted into png to avoid the error of tkimage.create function
+  image_original <- image
+  image <- image_convert(as.list(image)[[1]], format = "png")
+  if (!missing(scale))
+  {
+    image <- image_scale(image, scale)
+  }
+  
   # make initial output
   iniv <- 0
   initial <- image_despeckle(image, iniv)
@@ -106,5 +115,5 @@ interactive_despeckle <- function(image, range_max = 50, resolution = 1, return_
   {
     return(val_res)
   }
-  return(image_despeckle(image, val_res))
+  return(image_despeckle(image_original, val_res))
 }

@@ -1,5 +1,15 @@
 # magickGUI
 
+## magickGUI 1.2.2
+
+* skip unit tests on CRAN
+
+## magickGUI 1.2.1
+
+* deal with the error of tkimage.create function of tcltk package
+
+* add new parameter scale
+
 ## magickGUI 1.2.0
 
 ### New Functions

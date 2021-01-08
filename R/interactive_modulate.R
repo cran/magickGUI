@@ -8,6 +8,7 @@
 #' @param range_max_hue define maximum in slider of hue. must be positive.
 #' @param resolution resolution of slider
 #' @param return_param If return_param is TRUE, returns values of brightness and saturation and hue. If return_param is FALSE, returns a magick image object.
+#' @param scale geometry to be passed to image_scale function of magick package. image is scaled just for preview and result image is not scaled if scale is given.
 #' @return a magick image object or values of brightness and saturation
 #' @author Shota Ochi
 #' @export
@@ -15,8 +16,16 @@
 #' \donttest{
 #' interactive_modulate(wizard)
 #' }
-interactive_modulate <- function(image, range_max_brightness = 200, range_max_saturation = 200, range_max_hue = 200, resolution = 0.1, return_param = FALSE)
+interactive_modulate <- function(image, range_max_brightness = 200, range_max_saturation = 200, range_max_hue = 200, resolution = 0.1, return_param = FALSE, scale)
 {
+  # image must be convreted into png to avoid the error of tkimage.create function
+  image_original <- image
+  image <- image_convert(as.list(image)[[1]], format = "png")
+  if (!missing(scale))
+  {
+    image <- image_scale(image, scale)
+  }
+  
   # make initial output
   iniv <- 100
   initial <- image_modulate(image, iniv, iniv, iniv)
@@ -139,5 +148,5 @@ interactive_modulate <- function(image, range_max_brightness = 200, range_max_sa
   {
     return(val_res)
   }
-  return(image_modulate(image, val_res[1], val_res[2], val_res[3]))
+  return(image_modulate(image_original, val_res[1], val_res[2], val_res[3]))
 }

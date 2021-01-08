@@ -7,6 +7,7 @@
 #' @param channel a value specifying which channel(s) to set
 #' @param resolution resolution of slider
 #' @param return_param If return_param is TRUE, returns threshold value. If return_param is FALSE, returns a magick image object.
+#' @param scale geometry to be passed to image_scale function of magick package. image is scaled just for preview and result image is not scaled if scale is given.
 #' @return a magick image object or threshold value
 #' @author Shota Ochi
 #' @export
@@ -14,8 +15,16 @@
 #' \donttest{
 #' interactive_threshold(wizard)
 #' }
-interactive_threshold <- function(image, type = c("black", "white"), channel = NULL, resolution = 0.1, return_param = FALSE)
+interactive_threshold <- function(image, type = c("black", "white"), channel = NULL, resolution = 0.1, return_param = FALSE, scale)
 {
+  # image must be convreted into png to avoid the error of tkimage.create function
+  image_original <- image
+  image <- image_convert(as.list(image)[[1]], format = "png")
+  if (!missing(scale))
+  {
+    image <- image_scale(image, scale)
+  }
+  
   # make initial output
   iniv <- "0"
   initial <- image_threshold(image, type = type, threshold = paste(iniv, "%", sep = ""), channel = channel)
@@ -105,5 +114,5 @@ interactive_threshold <- function(image, type = c("black", "white"), channel = N
   {
     return(val_res)
   }
-  return(image_threshold(image, type = type, threshold = val_res, channel = channel))
+  return(image_threshold(image_original, type = type, threshold = val_res, channel = channel))
 }
