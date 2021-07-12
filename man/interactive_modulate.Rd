@@ -30,7 +30,7 @@ interactive_modulate(
 \item{scale}{geometry to be passed to image_scale function of magick package. image is scaled just for preview and result image is not scaled if scale is given.}
 }
 \value{
-a magick image object or values of brightness and saturation
+a magick image object or values of brightness, saturation, and hue
 }
 \description{
 Using image_modulate of 'magick' interactively.

@@ -23,10 +23,12 @@ NULL
 #' @importFrom magick image_implode
 #' @importFrom magick image_info
 #' @importFrom magick image_modulate
+#' @importFrom magick image_motion_blur
 #' @importFrom magick image_oilpaint
 #' @importFrom magick image_quantize
 #' @importFrom magick image_reducenoise
 #' @importFrom magick image_scale
+#' @importFrom magick image_shade
 #' @importFrom magick image_threshold
 #' @importFrom magick image_write
 #' @importFrom magick magick_config
